@@ -6,15 +6,23 @@ This project focuses on deploying and managing services using Kubernetes,
 including configuration files and commands for applying these configurations with `kubectl`.
 
 ## Files
-- [deployment.yaml](deployment.yaml)
-- [service.yaml](service.yaml)
+- [Deployment](deployment.yaml)
+- [Service](service.yaml)
+- [HTTPRoute](route.yaml)
 
 ## Commands
 
+### Deployment
 ```bash
-  kubectl apply -f deployment.yaml
+kubectl apply -f deployment.yaml
 ```
 
+### Service
 ```bash
-  kubectl apply -f service.yaml
+kubectl apply -f service.yaml
+```
+
+### Route
+```bash
+kubectl apply -f route.yaml
 ```

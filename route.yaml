@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  namespace: na-groupe12
+  name: frontend-g12-service
+spec:
+  parentRefs:
+    - name: http-gateway
+      namespace: nginx-gateway
+  hostnames:
+    - votre-domaine.fr
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: backend-g12
+          port: 80
