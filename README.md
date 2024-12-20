@@ -1,15 +1,20 @@
 # DevOps
 
+## Description
+
+This project focuses on deploying and managing services using Kubernetes,
+including configuration files and commands for applying these configurations with `kubectl`.
+
 ## Files
-- [deployment.yaml](./src/deployment.yaml)
-- [service.yaml](./src/service.yaml)
+- [deployment.yaml](deployment.yaml)
+- [service.yaml](service.yaml)
 
 ## Commands
 
 ```bash
-  kubectl apply -f src/deployment.yaml
+  kubectl apply -f deployment.yaml
 ```
 
 ```bash
-  kubectl apply -f src/service.yaml
+  kubectl apply -f service.yaml
 ```
