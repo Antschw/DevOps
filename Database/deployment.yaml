@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: na-groupe12
+  name: database-g12
+  labels:
+    app: database-g12
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database-g12
+  template:
+    metadata:
+      labels:
+        app: database-g12
+    spec:
+      containers:
+        - name: database
+          image: postgres:17.2
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: postgres_user
+                  name: database-configmap-g12
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  key: postgres_db
+                  name: database-configmap-g12
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: postgres_password
+                  name: database-configmap-g12
+          ports:
+            - containerPort: 80
