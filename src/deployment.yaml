@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: na-groupe12 # Mettre votre namespace ici
+  name: frontend-g12 # Ici, le nom est arbitraire encore une fois
+  labels:
+    app: frontend-g12 # Le label est un groupe clé/valeur arbitraire qui servira pour identifier votre déploiement auprès d'autres ressources.
+spec:
+  replicas: 2 # Le nombre de pods désiré
+  selector:
+    matchLabels:
+      app: frontend-g12
+  template:
+    metadata:
+      labels:
+        app: frontend-g12
+    spec: # Les valeurs ici sont similaires aux pods
+      containers:
+        - name: frontend
+          image: antschw/frontend:3c0af98d
+          ports:
+            - containerPort: 80
