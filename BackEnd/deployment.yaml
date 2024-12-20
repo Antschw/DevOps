@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: na-groupe12
+  name: backend-g12
+  labels:
+    app: backend-g12
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-g12
+  template:
+    metadata:
+      labels:
+        app: backend-g12
+    spec:
+      containers:
+        - name: backend
+          image: image # TODO: docker hub image
+          ports:
+            - containerPort: 80
