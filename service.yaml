@@ -5,10 +5,8 @@ metadata:
   name: frontend-g12-service
 spec:
   selector:
-    app: frontend-g12 # Ce sélecteur fait référence à des pods, et non au déploiement. Il faut bien préciser le label attribué aux pods.
+    app: frontend-g12
   ports:
     - protocol: TCP
-      port: 80 # Ici, il s'agit du port que ce service va EXPOSER pour rediriger le traffic vers le targetPort.
-      # Il n'est pas obligatoire de spécifier le même port et targetPort.
-      targetPort: 80 # Ici, il s'agit du port vers lequel le service va REDIRIGER le traffic. Il faut donc
-      # pointer vers un port exposé par les pods.
+      port: 80
+      targetPort: 80
