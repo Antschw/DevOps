@@ -17,7 +17,6 @@ spec:
             value: /
       backendRefs:
         - name: backend-service # Ici, il faut mettre le nom de votre service vers lequel le traffic sera redirigé
-          port:
-            80 # Le traffic sera redirigé vers le port du service. Il s'agit du port défini par la propriété 'port'
+          port: 80 # Le traffic sera redirigé vers le port du service. Il s'agit du port défini par la propriété 'port'
             # du service, et non 'targetPort'.
           

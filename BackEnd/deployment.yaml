@@ -6,7 +6,7 @@ metadata:
   labels:
     app: backend
 spec:
-  replicas: 1
+  replicas: 1 # Pour une base de donnée, ne pas mettre plus d'un réplica.
   selector:
     matchLabels:
       app: backend
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: nicolas90/backend:f5f52d87
+          image: nicolas90/backend:7e8864a8
           env:
             - name: DB_HOST
               valueFrom:
@@ -43,6 +43,21 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: DB_PASSWORD
+                  name: backend-configmap
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_USER
+                  name: backend-configmap
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_PASSWORD
+                  name: backend-configmap
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_DB
                   name: backend-configmap
           ports:
             - containerPort: 8000

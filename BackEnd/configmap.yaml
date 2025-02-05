@@ -9,3 +9,6 @@ data:
   DB_NAME: "articles_db"
   DB_USER: "articles_user"
   DB_PASSWORD: "articles_password"
+  POSTGRES_USER: "articles_user"
+  POSTGRES_PASSWORD: "articles_password"
+  POSTGRES_DB: "articles_db"

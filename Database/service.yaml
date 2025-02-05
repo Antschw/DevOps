@@ -8,7 +8,6 @@ spec:
     app: database # Ce sélecteur fait référence à des pods, et non au déploiement. Il faut bien préciser le label attribué aux pods.
   ports:
     - protocol: TCP
-      port:
-        5432 # Ici, il s'agit du port que ce service va EXPOSER pour rediriger le traffic vers le targetPort.
+      port: 5432 # Ici, il s'agit du port que ce service va EXPOSER pour rediriger le traffic vers le targetPort.
         # Il n'est pas obligatoire de spécifier le même port et targetPort.
       targetPort: 5432

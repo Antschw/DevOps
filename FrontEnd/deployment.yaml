@@ -18,5 +18,11 @@ spec:
       containers:
         - name: frontend
           image: antschw/frontend:3c0af98d
+          env: 
+            - name: VITE_BACKEND_API
+              valueFrom:
+                configMapKeyRef:
+                  key: VITE_BACKEND_API
+                  name: frontend-configmap
           ports:
             - containerPort: 80
