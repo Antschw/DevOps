@@ -2,11 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: na-groupe12
-  name: database-g12-service
+  name: database-service
 spec:
   selector:
-    app: database-g12
+    app: database # Ce sélecteur fait référence à des pods, et non au déploiement. Il faut bien préciser le label attribué aux pods.
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port:
+        5432 # Ici, il s'agit du port que ce service va EXPOSER pour rediriger le traffic vers le targetPort.
+        # Il n'est pas obligatoire de spécifier le même port et targetPort.
+      targetPort: 5432

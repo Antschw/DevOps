@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: na-groupe12
-  name: database-g12
+  name: database-deployment
   labels:
-    app: database-g12
+    app: database
 spec:
-  replicas: 1
+  replicas: 1 # Pour une base de donnée, ne pas mettre plus d'un réplica.
   selector:
     matchLabels:
-      app: database-g12
+      app: database
   template:
     metadata:
       labels:
-        app: database-g12
+        app: database
     spec:
       containers:
         - name: database
@@ -22,17 +22,17 @@ spec:
             - name: POSTGRES_USER
               valueFrom:
                 configMapKeyRef:
-                  key: postgres_user
-                  name: database-configmap-g12
+                  key: postgres_user # Là, c'est la clé à récupérer.
+                  name: database-configmap # Ici, il s'agit du nom de la ConfigMap
             - name: POSTGRES_DB
               valueFrom:
                 configMapKeyRef:
                   key: postgres_db
-                  name: database-configmap-g12
+                  name: database-configmap
             - name: POSTGRES_PASSWORD
               valueFrom:
                 configMapKeyRef:
                   key: postgres_password
-                  name: database-configmap-g12
+                  name: database-configmap
           ports:
-            - containerPort: 80
+            - containerPort: 5432

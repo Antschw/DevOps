@@ -1,19 +1,23 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  namespace: na-groupe12-route
-  name: backend-g12-service
+  namespace: na-groupe12 # Remplir avec votre namespace
+  name: na-groupe12-route # Remplir avec un nom arbitraire pour identifier votre ressource.
 spec:
   parentRefs:
-    - name: http-gateway
-      namespace: nginx-gateway
+    - name: http-gateway # Il s'agit du nom de la gateway globale, vous ne devez pas le changer.
+      namespace: nginx-gateway # Il s'agit du namespace contenant la gateway globale, vous ne devez pas le changer.
   hostnames:
-    - backend-na-gr12.jbienvenu.fr
+    - backend-na-gr12.jbienvenu.fr # Mettre votre nom de domaine ici. Il faudra me demander de vous en générer un.
   rules:
     - matches:
-        - path:
+        - path: # Cette section permet de définir les routes qui seront redirigées. Il est rare d'avoir besoin de mettre
+            # autre chose ici.
             type: PathPrefix
             value: /
       backendRefs:
-        - name: backend-g12-service
-          port: 80
+        - name: backend-service # Ici, il faut mettre le nom de votre service vers lequel le traffic sera redirigé
+          port:
+            80 # Le traffic sera redirigé vers le port du service. Il s'agit du port défini par la propriété 'port'
+            # du service, et non 'targetPort'.
+          

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: na-groupe12
+  name: backend-configmap
+data:
+  DB_HOST: "database-service"
+  DB_PORT: "5432"
+  DB_NAME: "articles_db"
+  DB_USER: "articles_user"
+  DB_PASSWORD: "articles_password"

@@ -2,21 +2,47 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: na-groupe12
-  name: backend-g12
+  name: backend-deployment
   labels:
-    app: backend-g12
+    app: backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: backend-g12
+      app: backend
   template:
     metadata:
       labels:
-        app: backend-g12
+        app: backend
     spec:
       containers:
         - name: backend
-          image: image # TODO: docker hub image
+          image: nicolas90/backend:f2cf74f6
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_HOST
+                  name: backend-configmap
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_PORT
+                  name: backend-configmap
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_NAME
+                  name: backend-configmap
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_USER
+                  name: backend-configmap
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: DB_PASSWORD
+                  name: backend-configmap
           ports:
-            - containerPort: 80
+            - containerPort: 8000
