@@ -15,5 +15,5 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: backend-g12
+        - name: frontend-g12-service
           port: 80
