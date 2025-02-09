@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: nicolas90/backend:a53bd45a
+          image: nicolas90/backend:7e8864a8
           env:
             - name: DB_HOST
               valueFrom:
